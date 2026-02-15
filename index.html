@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Adaptiv AI — GTM Bridge Round</title>
-  <meta name="description" content="Adaptiv AI investor landing page: markets, 6-month GTM plan, revenue model, ownership structure, Vibe Coder community, and flexible funding options (equity/debt hybrid)." />
-
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Brand Colors (Strictly from Logo) */
+      /* Brand Colors */
       --brand-navy: #0b1630;
       --brand-teal: #49c6b8;
       --brand-teal-glow: rgba(73, 198, 184, 0.5);
@@ -24,7 +23,7 @@
       --muted: #94a3b8;
       
       /* UI Elements */
-      --glass-bg: rgba(11, 22, 48, 0.6);
+      --glass-bg: rgba(11, 22, 48, 0.7);
       --glass-border: rgba(73, 198, 184, 0.2);
       --card-radius: 24px;
       --max-width: 1080px;
@@ -42,69 +41,75 @@
       font-family: var(--font-sans);
       color: var(--text);
       background-color: var(--bg);
-      /* Modern Mesh Gradient Background */
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(73, 198, 184, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 85% 85%, rgba(11, 22, 48, 0.8) 0%, transparent 50%);
+        radial-gradient(circle at 10% 10%, rgba(73, 198, 184, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(11, 22, 48, 0.9) 0%, transparent 40%);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       padding-bottom: 60px;
     }
 
     a { color: var(--brand-teal); text-decoration: none; transition: 0.2s; }
-    a:hover { color: #fff; }
 
-    /* ===== Layout Components ===== */
+    /* ===== Layout ===== */
     .wrap {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Deck Slide Section */
     .deck-section {
       margin-bottom: 60px;
-      padding-top: 20px; /* Offset for sticky nav */
+      padding-top: 20px;
       animation: fadeIn 0.8s ease-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Glass Cards */
     .card {
       background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
       border-radius: var(--card-radius);
       padding: 32px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* Grid Layouts - Mobile Optimized */
+    /* Grid System */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
     
+    /* ===== Mobile Optimization ===== */
     @media (max-width: 768px) {
-      .grid-2, .grid-4 { grid-template-columns: 1fr !important; }
-      .card { padding: 24px; }
-      h1 { font-size: 32px; }
-      .nav-links { display: none; } /* Hide heavy nav on mobile */
+      .wrap { padding: 0 16px; }
+      .deck-section { margin-bottom: 40px; }
+      
+      .card { 
+        padding: 24px 20px; /* Tighter padding for mobile */
+        border-radius: 18px;
+      }
+      
+      .grid-2 { grid-template-columns: 1fr !important; gap: 16px; }
+      
+      /* Typography Scaling */
+      h1 { font-size: 28px !important; line-height: 1.2 !important; }
+      h2 { font-size: 20px !important; }
+      
+      /* Hide top nav links on mobile, keep logo & print button */
+      .nav-links { display: none !important; } 
       .topnav { padding: 12px 0; }
     }
 
-    /* ===== Typography & Highlights ===== */
+    /* ===== Typography ===== */
     h1 {
       font-size: 42px;
       font-weight: 800;
-      line-height: 1.1;
       margin: 0 0 16px;
       letter-spacing: -1px;
       background: linear-gradient(to right, #fff, #a7b6c7);
@@ -112,7 +117,16 @@
       -webkit-text-fill-color: transparent;
     }
 
-    h2 { font-size: 24px; font-weight: 700; margin: 0 0 16px; color: #fff; }
+    /* Flex Header for Market Section - Prevents breaking */
+    .market-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    h2 { font-size: 24px; font-weight: 700; margin: 0; color: #fff; line-height: 1.3; }
     h3 { font-size: 18px; font-weight: 600; margin: 0 0 8px; color: var(--brand-teal); }
     
     .kicker {
@@ -128,7 +142,6 @@
 
     .muted { color: var(--muted); font-size: 15px; }
 
-    /* Highlights */
     .highlight-box {
       background: linear-gradient(90deg, rgba(73, 198, 184, 0.1), transparent);
       border-left: 4px solid var(--brand-teal);
@@ -141,45 +154,24 @@
       background: rgba(73, 198, 184, 0.15);
       color: var(--brand-teal);
       padding: 4px 10px;
-      border-radius: 20px;
+      border-radius: 6px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       border: 1px solid rgba(73, 198, 184, 0.2);
-      vertical-align: middle;
-      margin-left: 8px;
+      white-space: nowrap; /* Forces tag to stay on one line */
+      display: inline-block;
     }
 
-    /* ===== Buttons (Cleaned up for Bridge Round) ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 24px;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
-
-    /* ===== Navigation & Logo ===== */
+    /* ===== Navigation ===== */
     .topnav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(5, 8, 14, 0.9);
+      background: rgba(5, 8, 14, 0.95);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       padding: 16px 0;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
     .nav-inner {
       max-width: var(--max-width);
@@ -190,65 +182,57 @@
       align-items: center;
     }
     
-    /* PURE CSS LOGO FIX */
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
     .logo-text {
       font-family: 'Inter', sans-serif;
       font-weight: 800;
-      font-size: 24px;
+      font-size: 22px;
       color: #fff;
       letter-spacing: -1px;
+      line-height: 1;
     }
     .logo-text span { color: var(--brand-teal); }
     .logo-sub {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-top: 4px;
+      font-size: 10px; color: var(--muted); letter-spacing: 1.5px;
+      text-transform: uppercase; font-weight: 600; margin-top: 4px;
     }
 
-    .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 6px; }
     .nav-pill {
       font-size: 13px; color: var(--muted);
       padding: 8px 14px; border-radius: 20px;
       transition: 0.2s; font-weight: 500;
     }
     .nav-pill:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px; border-radius: 8px; cursor: pointer;
+    }
 
-    /* ===== Specific Section Styles ===== */
-    
-    /* Stats Grid */
+    /* ===== Stats ===== */
     .stat-item {
       background: rgba(255,255,255,0.03);
       padding: 16px;
-      border-radius: 16px;
+      border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.05);
     }
     .stat-val { font-size: 20px; font-weight: 800; color: #fff; display: block; margin-top: 4px; }
     .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
 
-    /* Funding Options */
+    /* ===== Funding & Funds Table ===== */
     .funding-card {
-      padding: 28px;
+      padding: 24px;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.02);
       transition: 0.3s;
     }
-    
     .funding-card.preferred {
       border: 2px solid var(--brand-teal);
       background: linear-gradient(180deg, rgba(73, 198, 184, 0.08), transparent);
-      box-shadow: 0 0 40px rgba(73, 198, 184, 0.1);
-      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(73, 198, 184, 0.1);
     }
-
     .pill-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
     .pill {
       font-size: 11px; font-family: var(--font-mono);
@@ -258,31 +242,32 @@
       color: #fff;
     }
 
-    /* Use of Funds Table */
-    .funds-table {
-      width: 100%;
-      margin-top: 20px;
-      border-collapse: collapse;
-    }
-    .funds-table td {
+    /* Mobile Responsive Funds List */
+    .funds-list-item {
+      display: flex;
+      justify-content: space-between;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      color: var(--muted);
-      font-size: 14px;
     }
-    .funds-table tr:last-child td { border-bottom: none; }
-    .funds-table .cat { font-weight: 600; color: #fff; width: 35%; vertical-align: top; }
-    .funds-table .desc { text-align: right; vertical-align: top; }
+    .funds-list-item:last-child { border-bottom: none; }
+    
+    .cat { font-weight: 700; color: #fff; font-size: 14px; width: 40%; }
+    .desc { text-align: right; color: var(--muted); font-size: 13px; width: 60%; }
 
-    /* List styling */
+    /* Stack on very small screens */
+    @media (max-width: 450px) {
+      .funds-list-item { flex-direction: column; gap: 4px; }
+      .cat, .desc { width: 100%; text-align: left; }
+    }
+
     ul { margin: 0; padding-left: 20px; color: var(--muted); }
     li { margin-bottom: 8px; }
 
     @media print {
       body { background: #fff; color: #000; }
       .card { background: none; border: 1px solid #ccc; box-shadow: none; color: #000; }
-      h1, h2, h3, .stat-val { color: #000 !important; -webkit-text-fill-color: initial !important; }
-      .btn, .topnav { display: none; }
+      h1, h2, h3, .stat-val, .cat { color: #000 !important; -webkit-text-fill-color: initial !important; }
+      .btn-ghost, .topnav { display: none; }
     }
   </style>
 </head>
@@ -298,13 +283,13 @@
 
       <div class="nav-links">
         <a class="nav-pill" href="#markets">Markets</a>
-        <a class="nav-pill" href="#offers">Offers</a>
+        <a class="nav-pill" href="#plan">Plan</a>
         <a class="nav-pill" href="#roadmap">Roadmap</a>
         <a class="nav-pill" href="#ask">Our Ask</a>
       </div>
 
       <div>
-        <button class="btn btn-ghost" onclick="window.print()">Print / PDF</button>
+        <button class="btn-ghost" onclick="window.print()">Print</button>
       </div>
     </div>
   </div>
@@ -312,18 +297,14 @@
   <div class="wrap">
 
     <section class="deck-section">
-      <div class="grid-2" style="align-items: stretch;">
-        
+      <div class="grid-2">
         <div class="card">
           <span class="kicker">The Vision</span>
-          <h1>AI automations that drive revenue now — evolving into custom tools and SaaS later.</h1>
-          <p class="muted" style="font-size:16px;">
-            Adaptiv AI deploys practical sales + operations automations for growing businesses. We charge a one-time setup fee (cash injection)
-            and a $500/month minimum retainer (stable cashflow). In parallel, we build a “Vibe Coder” community to train talent and accelerate custom tool delivery.
+          <h1>AI automations that drive revenue now — evolving into custom tools.</h1>
+          <p class="muted">
+            Adaptiv AI deploys practical sales + operations automations. We charge a one-time setup fee (cash injection) and a $500/month retainer (stable cashflow).
           </p>
-          
-          <div style="height:1px; background:var(--glass-border); margin:24px 0;"></div>
-          
+          <div style="margin-top:20px;"></div>
           <h3>Vision & Mission</h3>
           <div class="highlight-box">
             <p style="margin:0 0 8px">
@@ -335,14 +316,14 @@
           </div>
         </div>
 
-        <div class="card" style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="card" style="justify-content:center;">
           <span class="kicker">Executive Summary</span>
           
           <div class="grid-2" style="margin-top:10px;">
             <div class="stat-item">
               <span class="stat-label">6-Month Goal</span>
               <span class="stat-val">$5,000 MRR</span>
-              <span style="font-size:11px; color:var(--muted)">10 clients × $500/mo</span>
+              <span style="font-size:11px; color:var(--muted)">10 clients</span>
             </div>
             <div class="stat-item">
               <span class="stat-label">Year 1 Target</span>
@@ -352,7 +333,7 @@
             <div class="stat-item">
               <span class="stat-label">Ownership</span>
               <span class="stat-val">75% / 25%</span>
-              <span style="font-size:11px; color:var(--muted)">Founder / Co-founder</span>
+              <span style="font-size:11px; color:var(--muted)">Fndr / Co-fndr</span>
             </div>
             <div class="stat-item">
               <span class="stat-label">Structure</span>
@@ -361,32 +342,37 @@
             </div>
           </div>
 
-          <div style="height:1px; background:var(--glass-border); margin:24px 0;"></div>
-
-          <div class="highlight-box" style="margin:0; font-size:14px;">
-            <strong style="color:var(--brand-teal)">Market Strategy:</strong> Start with US/global buyers for faster traction, then expand to Nigeria during the custom-app phase with price-sensitive, ownership-first solutions.
+          <div class="highlight-box" style="margin-top:20px; font-size:13px;">
+            <strong style="color:var(--brand-teal)">Market Strategy:</strong> US/Global first for traction, then Nigeria for custom tools (Phase 2).
           </div>
         </div>
-
       </div>
     </section>
 
     <section class="deck-section" id="markets">
       <div class="grid-2">
         <div class="card">
-          <h2>Primary Market (Months 0–6) <span class="tag">US / Global</span></h2>
+          <div class="market-header">
+            <h2>Primary Market (Months 0–6)</h2>
+            <span class="tag">US / Global</span>
+          </div>
+          
           <p class="muted">
-            Focus on US/Global B2B SaaS and agencies. High urgency, stronger budgets.
+            Focus on B2B SaaS and agencies. High urgency, stronger budgets.
           </p>
           <ul style="margin-top:16px;">
             <li><strong style="color:#fff">Core buyers:</strong> B2B SaaS startups, agencies.</li>
-            <li><strong style="color:#fff">Pain:</strong> Outbound systems, CRM hygiene, pipeline.</li>
+            <li><strong style="color:#fff">Pain:</strong> Outbound systems, CRM hygiene.</li>
             <li><strong style="color:#fff">Strategy:</strong> Faster closes, clearer ROI.</li>
           </ul>
         </div>
 
         <div class="card">
-          <h2>Secondary Market (Phase 2) <span class="tag">Nigeria</span></h2>
+          <div class="market-header">
+            <h2>Secondary Market (Phase 2)</h2>
+            <span class="tag">Nigeria</span>
+          </div>
+
           <p class="muted">
             Target Nigeria during the custom-app phase. Price-sensitive, ownership-focused.
           </p>
@@ -395,26 +381,6 @@
             <li><strong style="color:#fff">Approach:</strong> Custom systems, data ownership.</li>
             <li><strong style="color:#fff">Why:</strong> Bespoke tools match local realities.</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="deck-section" id="plan">
-      <div class="card">
-        <h2>6-Month Go-to-Market Plan <span class="tag">Execution</span></h2>
-        <p class="muted">Outbound-led acquisition + repeatable delivery SOP.</p>
-
-        <div class="grid-2" style="margin-top:20px;">
-          <div class="highlight-box">
-            <strong style="color:#fff">Milestone (Month 2):</strong> 2–3 paying clients, outbound system running consistently.
-          </div>
-          <div class="highlight-box">
-            <strong style="color:#fff">Milestone (Month 4):</strong> 6 active retainers, standardized onboarding, weekly reporting.
-          </div>
-        </div>
-
-        <div class="highlight-box" style="border-left-color:#fff; background:rgba(255,255,255,0.05); text-align:center; margin-top:20px;">
-          <strong style="color:#fff">Milestone (Month 6):</strong> 10 retainers → <span style="color:var(--brand-teal)">$5,000 MRR</span> + documented workflows.
         </div>
       </div>
     </section>
@@ -430,12 +396,12 @@
            <div style="margin-top:24px;">
              <h3 style="font-size:16px;">1. Custom Tool Studio</h3>
              <p class="muted" style="font-size:13px; margin-bottom:16px;">
-               Move from "automations only" to dashboards, portals, and AI copilots using Supabase. Offer fixed scope packages (2–4 week builds).
+               Move to dashboards, portals, and AI copilots using Supabase. Fixed scope packages.
              </p>
 
-             <h3 style="font-size:16px;">2. Nigeria Entry</h3>
-             <p class="muted" style="font-size:13px; margin-bottom:16px;">
-               Sell custom-built systems that fit local workflows better than expensive SaaS. Emphasize data ownership and low ongoing costs.
+             <h3 style="font-size:16px;">2. Vibe Coder Launch</h3>
+             <p class="muted" style="font-size:13px;">
+               Publish weekly build-alongs and run monthly challenges. Shortlist top builders for paid internships/contracts to build a talent pipeline.
              </p>
            </div>
          </div>
@@ -456,19 +422,13 @@
                Adaptiv AI becomes an “AI systems company” with strong services cashflow, a product portfolio, and a community-driven talent engine.
              </p>
            </div>
-
-           <div class="highlight-box" style="margin-top:auto; text-align:center; background:rgba(73,198,184,0.15); border-left:none; border-top: 4px solid var(--brand-teal); border-radius: 8px;">
-             <span style="display:block; font-size:12px; color:var(--brand-teal); margin-bottom:5px; font-weight:700;">YEAR 1 REVENUE TARGET</span>
-             <strong style="color:#fff; font-size:26px;">$10,000 MRR</strong>
-           </div>
          </div>
-
        </div>
     </section>
 
     <section class="deck-section" id="ask">
       <div class="card">
-        <div style="text-align:center; max-width:800px; margin:0 auto 40px auto;">
+        <div style="text-align:center; max-width:800px; margin:0 auto 30px auto;">
           <span class="kicker">Our Ask</span>
           <h2>Bridge Capital to GTM <span class="tag">Bridge Round</span></h2>
           <p class="muted">
@@ -477,7 +437,6 @@
         </div>
 
         <div class="grid-2">
-          
           <div class="funding-card" style="opacity: 0.7;">
             <h3>Option A — Pure Loan</h3>
             <p class="muted" style="margin-top:10px;">Standard bridge loan, repaid from setup fees + retainer cashflow.</p>
@@ -504,30 +463,32 @@
               <span class="pill" style="border-color:var(--brand-teal);"><strong>Upside:</strong> Profit share</span>
             </div>
           </div>
-          
         </div>
 
         <div style="max-width:800px; margin: 40px auto 0 auto;">
            <h3 style="border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:0; color:#fff;">Use of Funds Breakdown</h3>
            
-           <table class="funds-table">
-             <tr>
-               <td class="cat">Hardware Upgrade</td>
-               <td class="desc">High-performance PC for local LLM testing & heavy automation builds.</td>
-             </tr>
-             <tr>
-               <td class="cat">Credibility & Content</td>
-               <td class="desc">Low-cost tools for inbound flow (Video hosting, scheduling, basic editing).</td>
-             </tr>
-             <tr>
-               <td class="cat">Tech Infrastructure</td>
-               <td class="desc">1-Year subscriptions: n8n, Apify, Supabase, Hosting.</td>
-             </tr>
-             <tr>
-               <td class="cat">Operational Runway</td>
-               <td class="desc">Buffer for small operational costs during Month 1-3.</td>
-             </tr>
-           </table>
+           <div style="margin-top:15px;">
+             <div class="funds-list-item">
+               <div class="cat">Hardware Upgrade</div>
+               <div class="desc">High-performance PC for local LLM testing & heavy automation builds.</div>
+             </div>
+             
+             <div class="funds-list-item">
+               <div class="cat">Credibility & Content</div>
+               <div class="desc">Tools for inbound marketing: Video hosting, basic editing, scheduling, and branding assets.</div>
+             </div>
+
+             <div class="funds-list-item">
+               <div class="cat">Tech Infrastructure</div>
+               <div class="desc">1-Year subscriptions: n8n, Apify, Supabase, Hosting.</div>
+             </div>
+
+             <div class="funds-list-item">
+               <div class="cat">Operational Runway</div>
+               <div class="desc">Buffer for small operational costs during Month 1-3.</div>
+             </div>
+           </div>
 
            <div style="text-align:center; margin-top:30px;">
              <p class="muted" style="font-size:12px;">
